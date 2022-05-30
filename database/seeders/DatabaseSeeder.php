@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Label;
-use App\Models\Task;
-use App\Models\TaskStatus;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             LabelSeeder::class,
-            TaskStatusSeeder::class,
+            StatusSeeder::class,
             TaskSeeder::class,
             TaskLabelSeeder::class,
         ]);

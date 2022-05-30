@@ -22,18 +22,18 @@ class Task extends Model
         return $this->belongsTo(User::class, 'author_id', 'id');
     }
 
-    public function status()
-    {
-        return $this->hasOne(TaskStatus::class, 'id', 'status_id');
-    }
-
     public function executor()
     {
-        return $this->hasOne(User::class, 'id', 'executor_id');
+        return $this->belongsTo(User::class, 'executor_id', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
     }
 
     public function labels()
     {
-        return $this->belongsToMany(Label::class, 'task_label', 'task_id', 'label_id');
+        return $this->belongsToMany(Label::class, 'task_label');
     }
 }

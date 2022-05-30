@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\TaskStatus;
+use App\Models\Status;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TaskStatusSeeder extends Seeder
+class StatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class TaskStatusSeeder extends Seeder
      */
     public function run()
     {
-        TaskStatus::factory(10)->create();
+        Status::factory(10)->create();
     }
 }

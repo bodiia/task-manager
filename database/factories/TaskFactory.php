@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Task;
-use App\Models\TaskStatus;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,7 +23,7 @@ class TaskFactory extends Factory
         return [
             'title' => $this->faker->text(20),
             'description' => $this->faker->text(),
-            'status_id' => TaskStatus::query()->inRandomOrder()->first()->id,
+            'status_id' => Status::query()->inRandomOrder()->first()->id,
             'author_id' => User::query()->inRandomOrder()->first()->id,
             'executor_id' => User::query()->inRandomOrder()->first()->id
         ];

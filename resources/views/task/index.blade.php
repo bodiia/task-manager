@@ -2,6 +2,39 @@
 
 @section('content')
     <div class="container">
+        <div class="row mb-5">
+            <div class="col">
+                <h1>Задачи</h1>
+                @if(session('success'))
+                    <div class="alert alert-primary" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 mb-4">
+                <form action="{{ route('tasks.index') }}" method="GET">
+                    <div class="d-flex gap-3">
+                        <select name="status" class="form-select">
+                            <option>Статус</option>
+                        </select>
+                        <select name="author" class="form-select">
+                            <option>Автор</option>
+                        </select>
+                        <select name="executor" class="form-select">
+                            <option>Исполнитель</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-primary">Применить</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+                <div>
+                    <a href="{{ route('tasks.create') }}" class="btn btn-outline-primary">Создать задачу</a>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <table class="table">

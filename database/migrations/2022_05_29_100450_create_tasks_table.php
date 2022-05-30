@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->foreignId('status_id')->references('id')->on('task_statuses')->cascadeOnDelete();
+            $table->foreignId('status_id')->references('id')->on('statuses')->cascadeOnDelete();
             $table->foreignId('author_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreignId('executor_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
