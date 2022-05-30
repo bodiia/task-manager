@@ -29,11 +29,13 @@
                     </div>
                 </form>
             </div>
-            <div class="col-2 d-flex justify-content-end">
-                <div>
-                    <a href="{{ route('tasks.create') }}" class="btn btn-outline-primary">Создать задачу</a>
+            @auth
+                <div class="col-2 d-flex justify-content-end">
+                    <div>
+                        <a href="{{ route('tasks.create') }}" class="btn btn-outline-primary">Создать задачу</a>
+                    </div>
                 </div>
-            </div>
+            @endauth
         </div>
         <div class="row">
             <div class="col">
@@ -56,14 +58,25 @@
                                 <td>{{ $task->status->status }}</td>
                                 <td>
                                     <a class="text-decoration-none" href="{{ route('tasks.show', $task) }}">
-                                        {{ $task->title }}
+                                        {{ Str::limit($task->title, 30) }}
                                     </a>
                                 </td>
                                 <td>{{ $task->author->name }}</td>
                                 <td>{{ $task->executor->name }}</td>
                                 <td>{{ $task->created_at->toDateString() }}</td>
                                 <td>
-                                    #
+                                    @can('update', $task)
+                                        <a href="{{ route('tasks.edit', $task) }}" class="btn btn-outline-primary mb-2">
+                                            Изменить
+                                        </a>
+                                    @endcan
+                                    @can('delete', $task)
+                                        <form action="{{ route('tasks.destroy', $task) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-outline-danger">Удалить</button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
