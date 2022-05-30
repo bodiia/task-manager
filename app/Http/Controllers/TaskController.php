@@ -30,16 +30,19 @@ class TaskController extends Controller
 
     public function store(StoreTaskRequest $request): RedirectResponse
     {
+        $validated = $request->validated();
+
         $task = new Task([
-            'title' => $request->title,
-            'description' => $request->description
+            'title' => $validated['title'],
+            'description' => $validated['description']
         ]);
-        $task->status()->associate($request->status);
-        $task->executor()->associate($request->executor);
+
+        $task->status()->associate($validated['status']);
+        $task->executor()->associate($validated['executor']);
         $task->author()->associate(auth()->user());
         $task->save();
 
-        foreach ($request->validated('labels') as $label) {
+        foreach ($validated['labels'] as $label) {
             if (Label::query()->find($label)) {
                 $task->labels()->attach($label);
             }
