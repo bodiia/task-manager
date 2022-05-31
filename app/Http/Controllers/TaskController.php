@@ -2,21 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
-use App\Models\Label;
-use App\Models\Status;
 use App\Models\Task;
 use App\Models\User;
-use Illuminate\Contracts\Support\Renderable;
+use App\Models\Label;
+use App\Models\Status;
+use Illuminate\Http\Request;
+use App\Services\TaskService;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdateTaskRequest;
+use Illuminate\Contracts\Support\Renderable;
 
 class TaskController extends Controller
 {
-    public function index(): Renderable
+    private TaskService $taskService;
+
+    public function __construct(TaskService $taskService)
     {
-        $tasks = Task::with(['author', 'executor', 'status'])->get();
-        return view('task.index', compact('tasks'));
+        $this->taskService = $taskService;
+    }
+
+    public function index(Request $request): Renderable
+    {
+        $tasks = $this->taskService->getFilteredTaskByQueryParams(
+            Task::with(['author', 'executor', 'status']),
+            $request->query()
+        )->get();
+
+        $users = User::all();
+        $statuses = Status::all();
+
+        return view('task.index', compact('tasks', 'users', 'statuses'));
     }
 
     public function create(): Renderable
@@ -89,6 +105,6 @@ class TaskController extends Controller
         $this->authorize('delete', $task);
         $task->delete();
 
-        return to_route('task.index')->with('success', 'Задача удалена.');
+        return to_route('tasks.index')->with('success', 'Задача удалена.');
     }
 }

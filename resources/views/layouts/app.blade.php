@@ -37,10 +37,10 @@
                             <a class="nav-link" href="{{ route('tasks.index') }}">Задачи</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Статусы</a>
+                            <a class="nav-link" href="{{ route('statuses.index') }}">Статусы</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Метки</a>
+                            <a class="nav-link" href="{{ route('labels.index') }}">Метки</a>
                         </li>
                     </ul>
 
@@ -69,7 +69,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Выйти
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

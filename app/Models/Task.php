@@ -19,12 +19,12 @@ class Task extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class, 'author_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function executor()
     {
-        return $this->belongsTo(User::class, 'executor_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function status()

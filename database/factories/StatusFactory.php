@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Status;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class StatusFactory extends Factory
@@ -16,7 +17,8 @@ class StatusFactory extends Factory
     public function definition()
     {
         return [
-            'status' => $this->faker->text(10)
+            'status' => $this->faker->text(10),
+            'creator_id' => User::query()->inRandomOrder()->first()->id
         ];
     }
 }
