@@ -9,6 +9,8 @@ class Task extends Model
 {
     use HasFactory;
 
+    public const PAGINATION_COUNT = 10;
+
     protected $fillable = [
         'title',
         'description',

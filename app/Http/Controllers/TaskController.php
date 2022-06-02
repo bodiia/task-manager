@@ -27,7 +27,7 @@ class TaskController extends Controller
         $tasks = $this->taskService->getFilteredTaskByQueryParams(
             Task::with(['author', 'executor', 'status']),
             $request->query()
-        )->get();
+        )->paginate(Task::PAGINATION_COUNT);
 
         $users = User::all();
         $statuses = Status::all();

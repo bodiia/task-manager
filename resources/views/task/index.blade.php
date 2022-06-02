@@ -91,6 +91,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $tasks->appends(request()->query())->links() }}
             </div>
         </div>
     </div>
