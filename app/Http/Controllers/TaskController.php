@@ -24,10 +24,9 @@ class TaskController extends Controller
 
     public function index(Request $request): Renderable
     {
-        $tasks = $this->taskService->getFilteredTaskByQueryParams(
-            Task::with(['author', 'executor', 'status']),
-            $request->query()
-        )->paginate(Task::PAGINATION_COUNT);
+        $tasks = $this->taskService
+            ->getFilteredTaskByQueryParams(Task::with(['author', 'executor', 'status']), $request->query())
+            ->paginate(Task::PAGINATION_COUNT);
 
         $users = User::all();
         $statuses = Status::all();
