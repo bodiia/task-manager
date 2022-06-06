@@ -28,14 +28,15 @@ class UpdateTaskRequest extends FormRequest
     public function rules()
     {
         $statusIds = Status::all()->pluck('id');
-        $executorIds = User::all()->pluck('id');
+        $userIds = User::all()->pluck('id');
         $labelIds = Label::all()->pluck('id');
 
         return [
             'title' => 'required|min:20|max:255',
             'description' => 'required|min:20|max:500',
             'status' => ['required', Rule::in($statusIds)],
-            'executor' => ['required', Rule::in($executorIds)],
+            'executor' => ['required', Rule::in($userIds)],
+            'author' => ['required', Rule::in($userIds)],
             'labels' => 'required|array',
             'labels.*' => Rule::in($labelIds)
         ];

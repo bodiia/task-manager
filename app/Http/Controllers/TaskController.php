@@ -91,7 +91,7 @@ class TaskController extends Controller
 
         $task->status()->associate($validated['status']);
         $task->executor()->associate($validated['executor']);
-        $task->author()->associate(auth()->user());
+        $task->author()->associate($validated['author']);
         $task->save();
 
         $task->labels()->sync($validated['labels']);
