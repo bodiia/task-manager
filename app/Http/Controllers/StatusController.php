@@ -29,6 +29,7 @@ class StatusController extends Controller
     {
         $this->authorize('delete', $status);
         $status->delete();
+
         return to_route('statuses.index')->with('success', 'Статус удален.');
     }
 }

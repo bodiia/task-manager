@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Filters\SelectFilter;
 use App\Filters\FiltersBuilder;
+use App\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 
 class TaskService

@@ -20,7 +20,7 @@ class TaskLabelFactory extends Factory
     {
         return [
             'task_id' => Task::query()->inRandomOrder()->first()->id,
-            'label_id' => Label::query()->inRandomOrder()->first()->id
+            'label_id' => Label::query()->inRandomOrder()->first()->id,
         ];
     }
 }

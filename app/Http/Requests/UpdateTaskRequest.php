@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use App\Models\Label;
-use App\Models\User;
 use App\Models\Status;
-use Illuminate\Validation\Rule;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateTaskRequest extends FormRequest
 {
@@ -38,7 +38,7 @@ class UpdateTaskRequest extends FormRequest
             'executor' => ['required', Rule::in($userIds)],
             'author' => ['required', Rule::in($userIds)],
             'labels' => 'required|array',
-            'labels.*' => Rule::in($labelIds)
+            'labels.*' => Rule::in($labelIds),
         ];
     }
 }

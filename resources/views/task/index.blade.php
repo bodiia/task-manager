@@ -19,19 +19,34 @@
                         <select name="status" class="form-select">
                             <option @if(! request()->query('status')) selected @endif disabled>Статус</option>
                             @foreach ($statuses as $status)
-                                <option value="{{ $status->id }}" @if(request()->query('status') == $status->id) selected @endif>{{ $status->status }}</option>
+                                <option
+                                    value="{{ $status->id }}"
+                                    @if(request()->query('status') == $status->id) selected @endif
+                                >{{ $status->status }}</option>
                             @endforeach
                         </select>
                         <select name="author" class="form-select">
-                            <option @if(! request()->query('author')) selected @endif disabled>Автор</option>
+                            <option
+                                @if(! request()->query('author')) selected @endif
+                                disabled
+                            >Автор</option>
                             @foreach ($users as $author)
-                                <option value="{{ $author->id }}" @if(request()->query('author') == $author->id) selected @endif>{{ $author->name }}</option>
+                                <option
+                                    value="{{ $author->id }}"
+                                    @if(request()->query('author') == $author->id) selected @endif
+                                >{{ $author->name }}</option>
                             @endforeach
                         </select>
                         <select name="executor" class="form-select">
-                            <option @if(! request()->query('executor')) selected @endif disabled>Исполнитель</option>
+                            <option
+                                @if(! request()->query('executor')) selected @endif
+                                disabled
+                            >Исполнитель</option>
                             @foreach ($users as $executor)
-                                <option value="{{ $executor->id }}" @if(request()->query('executor') == $executor->id) selected @endif>{{ $executor->name }}</option>
+                                <option
+                                    value="{{ $executor->id }}"
+                                    @if(request()->query('executor') == $executor->id) selected @endif
+                                >{{ $executor->name }}</option>
                             @endforeach
                         </select>
                         <button type="submit" class="btn btn-outline-primary">Применить</button>
@@ -75,7 +90,10 @@
                                 <td>{{ $task->created_at->toDateString() }}</td>
                                 <td>
                                     @can('update', $task)
-                                        <a href="{{ route('tasks.edit', $task) }}" class="btn btn-outline-primary mb-2">
+                                        <a
+                                            href="{{ route('tasks.edit', $task) }}"
+                                            class="btn btn-outline-primary mb-2"
+                                        >
                                             Изменить
                                         </a>
                                     @endcan

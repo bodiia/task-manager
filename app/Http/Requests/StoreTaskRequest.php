@@ -38,7 +38,7 @@ class StoreTaskRequest extends FormRequest
             'status' => ['required', Rule::in($statusIds)],
             'executor' => ['required', Rule::in($executorIds)],
             'labels' => 'required|array',
-            'labels.*' => Rule::in($labelIds)
+            'labels.*' => Rule::in($labelIds),
         ];
     }
 }

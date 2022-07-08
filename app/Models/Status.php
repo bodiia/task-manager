@@ -10,7 +10,7 @@ class Status extends Model
     use HasFactory;
 
     protected $fillable = [
-        'status'
+        'status',
     ];
 
     public function creator()

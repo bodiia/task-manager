@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 class FiltersBuilder
 {
-    /** @var $filters FilterInterface[] */
-    private $filters;
+    /** @var FilterInterface[] */
+    private array $filters;
+
     private Builder $query;
 
     public function __construct(Builder $query, ...$filters)

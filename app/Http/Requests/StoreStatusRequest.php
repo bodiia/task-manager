@@ -25,7 +25,7 @@ class StoreStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'required|min:5|unique:statuses,status'
+            'status' => 'required|min:5|unique:statuses,status',
         ];
     }
 }

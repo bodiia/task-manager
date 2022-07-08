@@ -15,7 +15,14 @@
                             <input type="text" name="author" value="{{ $task->author->id }}" hidden>
                             <div class="mb-3">
                                 <label for="title-task">Заголовок</label>
-                                <input id="title-task" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title', $task->title) }}">
+                                <input
+                                    id="title-task"
+                                    type="text"
+                                    class="form-control
+                                    @error('title') is-invalid @enderror"
+                                    name="title"
+                                    value="{{ old('title', $task->title) }}"
+                                >
                                 @error('title')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror

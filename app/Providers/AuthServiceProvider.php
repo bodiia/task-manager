@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use App\Models\Task;
 use App\Models\Label;
 use App\Models\Status;
-use App\Policies\TaskPolicy;
+use App\Models\Task;
 use App\Policies\LabelPolicy;
 use App\Policies\StatusPolicy;
+use App\Policies\TaskPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -20,7 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         Task::class => TaskPolicy::class,
         Status::class => StatusPolicy::class,
-        Label::class => LabelPolicy::class
+        Label::class => LabelPolicy::class,
     ];
 
     /**

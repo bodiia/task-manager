@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Task;
 use App\Models\Status;
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class TaskFactory extends Factory
 {
     protected $model = Task::class;
+
     /**
      * Define the model's default state.
      *
@@ -25,7 +26,7 @@ class TaskFactory extends Factory
             'description' => $this->faker->text(),
             'status_id' => Status::query()->inRandomOrder()->first()->id,
             'author_id' => User::query()->inRandomOrder()->first()->id,
-            'executor_id' => User::query()->inRandomOrder()->first()->id
+            'executor_id' => User::query()->inRandomOrder()->first()->id,
         ];
     }
 }

@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Builder;
 class SelectFilter implements FilterInterface
 {
     private string $relation;
+
     private string $value;
+
     private string $field;
 
     public function __construct(string $relation, string $value, string $field)

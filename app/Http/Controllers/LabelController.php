@@ -12,12 +12,14 @@ class LabelController extends Controller
     public function index(): Renderable
     {
         $labels = Label::all();
+
         return view('labels.index', compact('labels'));
     }
 
     public function store(StoreLabelRequest $request): RedirectResponse
     {
         Label::query()->create($request->validated());
+
         return to_route('labels.index')->with('success', 'Метка создана.');
     }
 
@@ -25,6 +27,7 @@ class LabelController extends Controller
     {
         $this->authorize('delete', $label);
         $label->delete();
+
         return to_route('labels.index')->with('success', 'Метка удалена.');
     }
 }

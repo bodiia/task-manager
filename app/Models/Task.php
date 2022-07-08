@@ -16,7 +16,7 @@ class Task extends Model
         'description',
         'status_id',
         'author_id',
-        'executor_id'
+        'executor_id',
     ];
 
     public function author()

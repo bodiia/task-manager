@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
-use App\Models\User;
-use App\Models\Label;
-use App\Models\Status;
-use Illuminate\Http\Request;
-use App\Services\TaskService;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Label;
+use App\Models\Status;
+use App\Models\Task;
+use App\Models\User;
+use App\Services\TaskService;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
@@ -49,7 +49,7 @@ class TaskController extends Controller
 
         $task = new Task([
             'title' => $validated['title'],
-            'description' => $validated['description']
+            'description' => $validated['description'],
         ]);
 
         $task->status()->associate($validated['status']);
@@ -86,9 +86,8 @@ class TaskController extends Controller
 
         $task->fill([
             'title' => $validated['title'],
-            'description' => $validated['description']
+            'description' => $validated['description'],
         ]);
-
         $task->status()->associate($validated['status']);
         $task->executor()->associate($validated['executor']);
         $task->author()->associate($validated['author']);

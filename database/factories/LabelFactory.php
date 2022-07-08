@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class LabelFactory extends Factory
 {
     protected $model = Label::class;
+
     /**
      * Define the model's default state.
      *
@@ -19,7 +20,7 @@ class LabelFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->title()
+            'name' => $this->faker->title(),
         ];
     }
 }
